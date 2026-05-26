@@ -7,7 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#0f0c29;--panel:#1a1640;--card:#231e55;--green:#55efc4;--text:#f0eeff;--muted:#9b96cc;--radius:16px;--cc:#f7c948;--brownie:#8B4513}
+:root{--bg:#0f0c29;--panel:#1a1640;--card:#231e55;--green:#55efc4;--text:#f0eeff;--muted:#9b96cc;--radius:16px;--cc:#f7c948}
 body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
 body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 20% 50%,#1a0a3a 0%,transparent 60%),radial-gradient(ellipse at 80% 20%,#0a1a3a 0%,transparent 60%);pointer-events:none;z-index:0}
 .page{position:relative;z-index:1}
@@ -17,43 +17,6 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .logo{font-family:'Fredoka One',cursive;font-size:clamp(2rem,6vw,3.5rem);color:#f7c948;text-shadow:0 0 40px #f7c94855;line-height:1.1}
 .logo span{color:#4ecdc4}
 .tagline{color:var(--muted);font-size:1rem;font-weight:600}
-
-/* Global Top Bar for Wallet Balance */
-.global-stats {
-    display: flex;
-    gap: 15px;
-    align-items: center;
-    background: var(--panel);
-    padding: 10px 20px;
-    border-radius: 30px;
-    margin-bottom: 5px;
-    border: 1px solid var(--card);
-}
-.wallet-display { font-family: 'Fredoka One', cursive; color: var(--cc); }
-.shop-nav-btn { background: var(--brownie) !important; color: white !important; border: 2px solid #cd853f !important; padding: 4px 14px; font-size: 0.85rem; border-radius: 20px; cursor: pointer; font-family: 'Fredoka One', cursive; transition: transform 0.2s;}
-.shop-nav-btn:hover { transform: scale(1.05); }
-
-/* Collective Goal Tracker Layout */
-.goal-container {
-    background: var(--panel);
-    border-radius: var(--radius);
-    padding: 1.25rem;
-    width: 100%;
-    max-width: 1000px;
-    border: 2px dashed var(--cc);
-    margin-bottom: 0.5rem;
-    text-align: center;
-}
-.goal-title { font-family: 'Fredoka One', cursive; font-size: 1.2rem; color: #fff; margin-bottom: 0.3rem; }
-.goal-bar-bg { width: 100%; height: 22px; background: var(--bg); border-radius: 11px; overflow: hidden; border: 1px solid var(--muted); margin: 10px 0; position: relative;}
-.goal-bar-fill { height: 100%; background: linear-gradient(90deg, #a0522d, #d2691e); width: 0%; transition: width 0.5s ease; }
-.goal-text { font-weight: 800; color: var(--green); font-size: 1.05rem; }
-
-/* Shop Screen Layout */
-#shop-screen { gap: 1.25rem; max-width: 600px; margin: 0 auto; width: 100%; }
-.shop-card { background: var(--card); padding: 1.75rem; border-radius: var(--radius); border: 2px solid var(--cc); text-align: center; width: 100%; }
-.code-box { background: var(--bg); padding: 12px; border-radius: 8px; margin-top: 15px; font-family: monospace; color: var(--green); font-size: 1.2rem; word-break: break-all; border: 1px solid var(--card); display: none; }
-
 .book-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;width:100%;max-width:1000px;margin-top:.5rem}
 .book-card{background:var(--card);border-radius:var(--radius);padding:1.25rem;cursor:pointer;border:2px solid transparent;transition:all .25s;text-align:left}
 .book-card:hover{transform:translateY(-4px);border-color:var(--bc,#f7c948)}
@@ -125,6 +88,20 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .flash-counter{font-size:.85rem;color:var(--muted);font-weight:700}
 .confetti-piece{position:fixed;width:9px;height:9px;border-radius:2px;pointer-events:none;animation:fall linear forwards;z-index:999}
 @keyframes fall{0%{transform:translateY(-20px) rotate(0deg);opacity:1}100%{transform:translateY(110vh) rotate(720deg);opacity:0}}
+/* --- BROWNIE SHOP ADDITIONS --- */
+:root { --brownie: #8B4513; }
+.global-stats { display: flex; gap: 15px; align-items: center; background: var(--panel); padding: 10px 20px; border-radius: 30px; margin-bottom: 5px; border: 1px solid var(--card); }
+.wallet-display { font-family: 'Fredoka One', cursive; color: var(--cc); }
+.shop-nav-btn { background: var(--brownie) !important; color: white !important; border: 2px solid #cd853f !important; padding: 4px 14px; font-size: 0.85rem; border-radius: 20px; cursor: pointer; font-family: 'Fredoka One', cursive; transition: transform 0.2s;}
+.shop-nav-btn:hover { transform: scale(1.05); }
+.goal-container { background: var(--panel); border-radius: var(--radius); padding: 1.25rem; width: 100%; max-width: 1000px; border: 2px dashed var(--cc); margin-bottom: 0.5rem; text-align: center; }
+.goal-title { font-family: 'Fredoka One', cursive; font-size: 1.2rem; color: #fff; margin-bottom: 0.3rem; }
+.goal-bar-bg { width: 100%; height: 22px; background: var(--bg); border-radius: 11px; overflow: hidden; border: 1px solid var(--muted); margin: 10px 0; position: relative;}
+.goal-bar-fill { height: 100%; background: linear-gradient(90deg, #a0522d, #d2691e); width: 0%; transition: width 0.5s ease; }
+.goal-text { font-weight: 800; color: var(--green); font-size: 1.05rem; }
+#shop-screen { gap: 1.25rem; max-width: 600px; margin: 0 auto; width: 100%; }
+.shop-card { background: var(--card); padding: 1.75rem; border-radius: var(--radius); border: 2px solid var(--cc); text-align: center; width: 100%; }
+.code-box { background: var(--bg); padding: 12px; border-radius: 8px; margin-top: 15px; font-family: monospace; color: var(--green); font-size: 1.2rem; word-break: break-all; border: 1px solid var(--card); display: none; }
 .teacher-gear { position: fixed; bottom: 10px; right: 10px; background: transparent; border: none; cursor: pointer; font-size: 1.2rem; opacity: 0.2; z-index: 1000; }
 .teacher-gear:hover { opacity: 1; }
 </style>
@@ -132,14 +109,12 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 <body>
 <div class="page">
 
+<!-- HOME -->
 <div id="home" class="screen active">
-  <div class="global-stats">
+    <div class="global-stats">
      <div class="wallet-display">💰 My Points: <span id="my-wallet">0</span> pts</div>
      <button class="shop-nav-btn" onclick="switchScreen('shop-screen')">🛒 Brownie Store</button>
   </div>
-
-  <div class="logo">Lit Circle<br><span>Review Game</span> ⭐</div>
-  <div class="tagline">Pick your book to start studying!</div>
 
   <div class="goal-container">
       <div class="goal-title">🍫 Exam Day Brownie Fund Goal! 🍫</div>
@@ -148,7 +123,8 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
       </div>
       <div class="goal-text"><span id="class-total-disp">0</span> / <span id="class-target-disp">15000</span> Total Class Points</div>
   </div>
-
+  <div class="logo">Lit Circle<br><span>Review Game</span> ⭐</div>
+  <div class="tagline">Pick your book to start studying!</div>
   <div class="book-grid">
     <div class="book-card" style="--bc:#f7c948" onclick="selectBook(0)">
       <span class="book-emoji">🏳️</span>
@@ -183,23 +159,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
   </div>
 </div>
 
-<div id="shop-screen" class="screen">
-    <button class="back-btn" onclick="goHome()">← Back to Home</button>
-    <div class="book-header" style="border-color: #8B4513; background: var(--card);">
-        <div class="book-header-emoji">🧁</div>
-        <div class="book-header-title" style="color: #cd853f;">The Wednesday Brownie Fund</div>
-        <div class="book-header-sub">Pool your study points together to earn homemade brownies for your final exam day!</div>
-    </div>
-    <div class="shop-card">
-        <h3>📥 Contribute Points to Class Goal</h3>
-        <p style="color: var(--muted); margin: 8px 0; font-size: 0.95rem;">Turn your individual study hard work into collective reward power!</p>
-        <div class="wallet-display" style="margin: 20px 0; font-size: 1.4rem;">Your Bank balance: <span id="shop-wallet">0</span> pts</div>
-        <button class="result-btn btn-primary" onclick="generateContributionCode()" style="width:100%; padding: 0.8rem 1.5rem;">Donate My Points & Get Receipt Code</button>
-        <div class="code-box" id="code-box"></div>
-        <p id="shop-instruction" style="font-size:0.85rem; color:var(--green); margin-top:12px; display:none; line-height:1.4;">📋 Code copied automatically! Paste this string into your class form/doc so your teacher can add it to the bar!</p>
-    </div>
-</div>
-
+<!-- BOOK SCREEN -->
 <div id="book-screen" class="screen">
   <button class="back-btn" onclick="goHome()">← All Books</button>
   <div class="book-header">
@@ -231,6 +191,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
   </div>
 </div>
 
+<!-- QUIZ SCREEN -->
 <div id="quiz-screen" class="screen">
   <div class="quiz-top">
     <button class="back-btn" onclick="goBook()" style="padding:.3rem .8rem;font-size:.78rem">← Books</button>
@@ -248,6 +209,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
   <button class="next-btn" id="next-btn" onclick="nextQuestion()">Next →</button>
 </div>
 
+<!-- FLASH SCREEN -->
 <div id="flash-screen" class="screen">
   <button class="back-btn" onclick="goBook()">← Books</button>
   <div class="book-header" style="padding:1rem">
@@ -266,6 +228,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
   </div>
 </div>
 
+<!-- RESULTS SCREEN -->
 <div id="results-screen" class="screen">
   <div class="trophy" id="trophy-emoji">🏆</div>
   <div class="result-title" id="result-title">Great Job!</div>
@@ -279,8 +242,25 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
     <button class="result-btn btn-secondary" onclick="goHome()">🏠 Home</button>
   </div>
 </div>
+<div id="shop-screen" class="screen">
+    <button class="back-btn" onclick="goHome()">← Back to Home</button>
+    <div class="book-header" style="border-color: #8B4513; background: var(--card);">
+        <div class="book-header-emoji">🧁</div>
+        <div class="book-header-title" style="color: #cd853f;">The Wednesday Brownie Fund</div>
+        <div class="book-header-sub">Pool your study points together to earn homemade brownies for your final exam day!</div>
+    </div>
+    <div class="shop-card">
+        <h3>📥 Contribute Points to Class Goal</h3>
+        <p style="color: var(--muted); margin: 8px 0; font-size: 0.95rem;">Turn your individual study hard work into collective reward power!</p>
+        <div class="wallet-display" style="margin: 20px 0; font-size: 1.4rem;">Your Bank balance: <span id="shop-wallet">0</span> pts</div>
+        <button class="result-btn btn-primary" onclick="generateContributionCode()" style="width:100%; padding: 0.8rem 1.5rem;">Donate My Points & Get Receipt Code</button>
+        <div class="code-box" id="code-box"></div>
+        <p id="shop-instruction" style="font-size:0.85rem; color:var(--green); margin-top:12px; display:none; line-height:1.4;">📋 Code copied automatically! Paste this string into your class form/doc so your teacher can add it to the bar!</p>
+    </div>
+</div>
 
-</div><button class="teacher-gear" onclick="teacherPanel()">⚙️</button>
+<button class="teacher-gear" onclick="teacherPanel()">⚙️</button>
+</div><!-- end .page -->
 
 <script>
 // =========================================================
@@ -485,281 +465,585 @@ const BOOKS = [
               "He falls off his horse during a cavalry charge.",
               "He gets hit by a stray cannonball fragment."],
      correct:1,
-     feedback:"Ironically, Henry's wound does NOT come from bravery in battle. A Union soldier (from his OWN side!) panics and hits Henry on the head with his rifle when Henry holds onto him trying to ask what's happening. Henry later lets everyone think it's a bullet wound from fighting."}
-   ]},
+     feedback:"Ironically, Henry's wound does NOT come from bravery in battle. A Union soldier (from his OWN side!) panics and hits Henry on the head with a rifle when Henry grabs the man trying to stop him from retreating. Henry's 'badge of courage' is actually an accidental wound from his own side — a symbol of his continued dishonesty."},
+    {cat:"Character — Chapter 8",
+     q:"Why does Henry feel 'BETTER' when Wilson asks for his yellow envelope back?",
+     choices:["Henry knows Wilson has been promoted (moved up in rank) to captain.",
+              "Wilson gave Henry that envelope because Wilson expected to DIE — meaning Wilson was also afraid. Now Henry feels less ashamed of his own fear.",
+              "Henry found money inside the envelope and does not want to return it.",
+              "Henry is angry at Wilson for losing his own envelope."],
+     correct:1,
+     feedback:"Before the first battle, Wilson gave Henry his personal envelope thinking he might die — he was terrified too! Now Wilson wants it back (because he survived and is embarrassed he gave it away). Henry realizes Wilson was just as scared as he was. This gives Henry a sense of power — he knows Wilson's secret weakness, which makes him feel less ashamed of his own."},
+    {cat:"Vocabulary",
+     q:"Henry's regiment waits in camp for a very long time doing nothing. What does REGIMENT most likely mean?",
+     choices:["A single soldier fighting alone",
+              "A large organized group of soldiers in the army",
+              "A type of gun used in the Civil War",
+              "A detailed battle plan made by a general"],
+     correct:1,
+     feedback:"A REGIMENT is a military unit — a large organized group of soldiers, usually several hundred to a few thousand, who fight and train together under the same command. It comes from context clues in the story: 'Henry and the other soldiers in his regiment' — showing it's a group he belongs to."},
+    {cat:"Big Theme",
+     q:"Which of the following is a MAJOR THEME (big message) in The Red Badge of Courage?",
+     choices:["Good soldiers must always obey their leaders without asking any questions.",
+              "People can easily find peace and happiness by fighting in a war.",
+              "Fear is a natural human feeling, and true bravery can grow after facing hard times.",
+              "It is better to live a quiet life on a farm than to dream about becoming a hero."],
+     correct:2,
+     feedback:"The big theme is that FEAR IS NATURAL — even Henry, who runs away, eventually becomes genuinely brave. True courage is NOT the absence of fear — it is facing your fear and continuing to do the right thing anyway. Henry changes and grows throughout the story, showing that bravery is something that develops over time."}
+  ]},
+
   // 1 — HOW I BECAME A GHOST
-  {id:1, emoji:"👻", title:"How I Became a Ghost", questions:[]},
+  {id:1, emoji:"👻", color:"#ff6b6b",
+   title:"How I Became a Ghost",
+   desc:"By Tim Tingle — Historical Fiction",
+   questions:[
+    {cat:"Plot — Beginning",
+     q:"What major news does Isaac's father share with the family at the beginning of the story?",
+     choices:["The family won a prize of new land from the U.S. government.",
+              "The U.S. government is forcing the Choctaw people to leave their homeland and march west.",
+              "Isaac's father found a new job in a nearby city.",
+              "A new school is being built in their village for Choctaw children."],
+     correct:1,
+     feedback:"Isaac's father shares the devastating news that the U.S. government is ordering the Choctaw people to leave their homeland. This begins the family's terrible journey — the Trail of Tears — which will change everything about Isaac's life and eventually lead to him becoming a ghost."},
+    {cat:"Historical Facts",
+     q:"What is the Trail of Tears?",
+     choices:["The U.S. government building new walking trails all across the country.",
+              "When Native Americans were FORCED to leave their homes and march long distances, causing the deaths of thousands of people.",
+              "Any trail in a forest where people walk and feel sad.",
+              "A book written about Native Americans leaving their homes."],
+     correct:1,
+     feedback:"The Trail of Tears was the forced relocation of Native American nations — including the Choctaw, Cherokee, and others — by the U.S. government in the 1830s. Thousands of people died from cold, hunger, disease, and exhaustion during the brutal journey. It is one of the darkest chapters in American history."},
+    {cat:"Supernatural Elements",
+     q:"What happens when Isaac gets a 'WARM SHIVER'?",
+     choices:["He feels sick with a fever and needs to rest.",
+              "He receives a supernatural vision or special knowledge about something that will happen.",
+              "He becomes angry and starts arguing with others.",
+              "He feels cold and knows a bad storm is coming."],
+     correct:1,
+     feedback:"When Isaac gets a warm shiver, he receives a supernatural warning or vision — special knowledge about a future event. This ability is one of the first signs that Isaac is connected to the spirit world and is beginning his transformation. It is part of the Choctaw spiritual beliefs woven throughout the story."},
+    {cat:"Character Motivation",
+     q:"Why does Isaac's mother REFUSE the blankets offered by the Nahullos (white settlers) after the village is burned?",
+     choices:["She doesn't need blankets because it is warm outside.",
+              "She is too proud to accept help from anyone.",
+              "She does NOT trust the Nahullos and fears the blankets could be dangerous or used to disrespect her family.",
+              "She already has enough blankets for the entire family."],
+     correct:2,
+     feedback:"Isaac's mother refuses because she deeply distrusts the Nahullos. This is historically significant — there were real cases of colonizers giving disease-infected blankets to Native Americans. Her refusal shows both deep distrust AND a determination to maintain her family's dignity and safety even in a desperate situation."},
+    {cat:"Character Details",
+     q:"Who are the members of Isaac's immediate family traveling on the Trail of Tears, including their very unusual pet?",
+     choices:["Isaac, his parents, his brother Luke, and his pet dog named Jumper",
+              "Isaac, his grandmother, his uncle, and a talking parrot.",
+              "Isaac, his mother, his uncle Harry, and his pet dog named Jumper.",
+              "Isaac, his two older brothers, and a baby bear."],
+     correct:0,
+     feedback:"Isaac travels with his mother, father, and brother Luke — and their very special pet, Jumper, who is a dog! Jumper is a beloved and important member of the family, not just a pet."},
+    {cat:"Supernatural Elements",
+     q:"What supernatural ability does the character JOSEPH have?",
+     choices:["He can fly over long distances to scout the path ahead.",
+              "He can speak to animals and command them to help.",
+              "He can turn into a panther and speak to ghosts and spirits.",
+              "He can predict the exact weather for each upcoming day."],
+     correct:2,
+     feedback:"Joseph has the remarkable ability to change into a panther and communicate with ghosts and spirits of the dead. This ability is connected to Choctaw spiritual beliefs in the story. Joseph's gift is rare and unusual — even among his own people. His ability foreshadows what will happen to Isaac, who eventually becomes a ghost himself."},
+    {cat:"Cultural Understanding",
+     q:"According to the text, how do Choctaw people view 'community'?",
+     choices:["Community is not very important — each family takes care of only themselves.",
+              "Community is VERY important — they treat each other like a loving family and help one another survive.",
+              "Community means only the people who live in the exact same house.",
+              "Community is only important during special celebrations and festivals."],
+     correct:1,
+     feedback:"The Choctaw people in the story have an extremely deep sense of community. They look out for each other, share resources, care for the sick and elderly, and treat the whole group like an extended family. This powerful sense of community is what helps them endure the terrible suffering of the Trail of Tears."},
+    {cat:"Big Theme",
+     q:"Why did Ruth and Gabe first try to keep Naomi a secret and not talk about her?",
+     choices:["Naomi didn't want to be rescued.",
+              "Ruth and Gabe didn't want Nita to know that Naomi was taken.",
+              "Ruth and Gabe thought Naomi was dead, so they were too sad to talk about her.",
+              "The soldiers told them that they would take Nita too if they told anyone about Naomi."],
+     correct:3,
+     feedback:"The The soldiers threatened Gabe and Ruth that they would also take Nita, Naomi's sister, if Gabe and Ruth told anyone that they took Naomi. Now that Nita is dead, they no longer worry about the soldiers’ threat."}
+  ]},
+
   // 2 — MARIA MARIA
-  {id:2, emoji:"🌀", title:"Maria Maria", questions:[]},
+  {id:2, emoji:"🌀", color:"#4ecdc4",
+   title:"Maria Maria",
+   desc:"By Monica Brown — Historical Fiction",
+   questions:[
+    {cat:"Plot — Beginning",
+     q:"What is the name of the town where Kamila lives?",
+     choices:["Hartford, Connecticut.",
+              "Mexico City, Mexico.",
+              "Miami, Florida.",
+              "San Lorenzo, Puerto Rico."],
+     correct:3,
+     feedback:"Kamila and her family live in the small town of San Lorenzo, Puerto Rico. Her aunt lives in Hartford, CT."},
+    {cat:"Plot — Stefany's Journey",
+     q:"Why does Stefany need to travel to the city of Hartford?",
+     choices:["She is going to help out on a school field trip to Hartford.",
+              "She needs to travel to support her sister who is sick and needs surgery.",
+              "She wants to attend a concert in the city.",
+              "She is permanently moving to Hartford for a new job."],
+     correct:1,
+     feedback:"Stefany must make the difficult journey to Hartford to help her sister out who is having surgery. She must leave right before the disastrous hurricane arrives leaving her family alone and herself worried and stressed about their safety."},
+    {cat:"Plot — Preparing for the Storm",
+     q:"When the family gathers at the grandmother's house, why are all the ADULTS acting so serious?",
+     choices:["They are secretly planning a surprise birthday party.",
+              "They are worried and scared because a very dangerous hurricane is coming to Puerto Rico.",
+              "They are upset about a family disagreement.",
+              "They just heard that school will be cancelled for an entire week."],
+     correct:1,
+     feedback:"The adults are completely serious because Hurricane Maria is approaching — and it is going to be extremely powerful and dangerous. Their seriousness signals to the reader (and to Kamila) just how threatening this hurricane is. The adults are in emergency mode, trying to protect their family."},
+    {cat:"Character Emotions",
+     q:"How does Stefany feel about leaving her family to go on her trip?",
+     choices:["She is very excited and cannot wait to go on the trip.",
+              "She feels sad, worried, and torn — she does NOT want to leave her family during such a dangerous time.",
+              "She doesn't care much and is happy to get away for a while.",
+              "She is angry at her parents for making her leave."],
+     correct:1,
+     feedback:"Stefany feels deeply conflicted and sad. She loves her family and is frightened about leaving them during a hurricane. Her reluctance shows her loyalty, love, and strong sense of family — central values in the book. This emotional conflict makes her character very relatable."},
+    {cat:"Plot — Community Preparation",
+     q:"What do Kamila and her father do to help neighbors prepare for Hurricane Maria?",
+     choices:["They board up windows, gather water and food supplies, and check on elderly neighbors to make sure they are safe.",
+              "They call the police and ask them to evacuate the whole neighborhood.",
+              "They drive to the airport to escape to another country.",
+              "They build a completely new shelter from scratch in the backyard."],
+     correct:0,
+     feedback:"Kamila and her father work hard as a team to help their community prepare — boarding up windows to protect against powerful winds, storing water and food, and personally checking on elderly neighbors who cannot care for themselves. This scene strongly establishes the theme of community working together to survive."},
+    {cat:"Plot — During the Storm",
+     q:"Where do Kamila and her family hide to stay safe while the hurricane is happening?",
+     choices:["In a tall, strong concrete building downtown.",
+              "In a safe interior (inside) room away from windows, sheltering from the worst of the storm.",
+              "In their car, driving as fast as possible away from the storm.",
+              "On the roof of their house to watch the storm pass over."],
+     correct:1,
+     feedback:"During the hurricane, the family shelters in the safest part of their home — away from windows and exterior walls. Even from inside, the story conveys how terrifying and destructive Hurricane Maria is, with howling winds and devastating destruction surrounding them."},
+    {cat:"Cultural Knowledge — Taíno History",
+     q:"What does the grandmother tell Kamila about the history of Puerto Rico and the TAÍNO PEOPLE?",
+     choices:["The Taíno were Spanish explorers who were the first to discover Puerto Rico.",
+              "The Taíno were the original indigenous people of Puerto Rico, with their own rich culture and language, who lived there long before Spanish colonization.",
+              "The Taíno people were the ones who built the city of San Juan.",
+              "The Taíno were a famous group of pirates who once lived on the island."],
+     correct:1,
+     feedback:"The grandmother shares the history of the Taíno — the indigenous people who lived on the island of Puerto Rico for thousands of years before Spanish colonization. This conversation connects Kamila to her deep cultural roots and heritage. It shows that Puerto Rican identity is ancient, complex, and worth being proud of."},
+    {cat:"Plot — After the Storm",
+     q:"After Hurricane Maria passes, how does Kamila spend her time helping her community?",
+     choices:["She leaves the island immediately to go to school in the United States.",
+              "She helps clear debris, brings food and water to neighbors, and works to help rebuild her community.",
+              "She stays home and is too scared to go outside.",
+              "She spends all her time trying to fix the family's damaged car."],
+     correct:1,
+     feedback:"After the hurricane, Kamila is actively involved in helping her community recover. She helps clear debris, shares food and water with neighbors, and participates in rebuilding. This shows the book's powerful themes of perseverance (not giving up) and community strength."},
+    {cat:"Big Theme",
+     q:"Which of the following is a MAJOR THEME (big message) in Maria Maria?",
+     choices:["The history of professional sports and the importance of winning competitions.",
+              "Perseverance in the face of disaster, the strength of community, and the importance of family and cultural identity.",
+              "The benefits of living in a big city and why it is better to leave your old culture behind.",
+              "The development of modern technology and how machines are built in factories."],
+     correct:1,
+     feedback:"Maria Maria's central themes are perseverance (not giving up when everything is destroyed), the POWER OF COMMUNITY, the importance of FAMILY bonds, and being PROUD OF YOUR CULTURAL IDENTITY even when times are extremely hard. The hurricane tests all of these things — and the community passes the test."}
+  ]},
+
   // 3 — NUMBER THE STARS
-  {id:3, emoji:"⭐", title:"Number the Stars", questions:[]},
-  
-  // 4 — NINE, TEN (Bug-fixed complete options package)
-  {id:4, emoji:"✈️", color:"fd79a8", title:"Nine, Ten", desc:"By Nora Raleigh Baskin", questions:[
-    {cat:"Theme Review",
+  {id:3, emoji:"⭐", color:"#a29bfe",
+   title:"Number the Stars",
+   desc:"By Lois Lowry — Historical Fiction",
+   questions:[
+    {cat:"Plot — Why Ellen is Hidden",
+     q:"Why does Annemarie's family hide Ellen?",
+     choices:["Ellen's parents are on vacation and she has nowhere safe to sleep.",
+              "Ellen is Jewish, and the Nazi soldiers are capturing Jewish people — the family hides her to protect her life.",
+              "Ellen is sick with a serious illness and needs a quiet place to recover.",
+              "Annemarie's parents want to adopt Ellen as their own daughter."],
+     correct:1,
+     feedback:"The Nazis are occupying Denmark and rounding up Jewish families to send them to concentration camps. Ellen is Jewish, so hiding her with Annemarie's Christian family is literally a matter of life and death. Annemarie's family risks their own safety — and their own lives — to protect their friend."},
+    {cat:"Historical Facts — The Holocaust",
+     q:"What was the HOLOCAUST?",
+     choices:["A major battle fought during World War II between Germany and Denmark specifically.",
+              "A time when Jewish people were forced to quit their jobs by the Nazis.",
+              "The systematic, government-organized murder of six million Jews and millions of others by the Nazi government during World War II.",
+              "A peace treaty signed between Germany and other European countries after World War II ended."],
+     correct:2,
+     feedback:"The Holocaust was the systematic, state-sponsored genocide of six million Jewish people AND millions of others (Roma, disabled people, LGBTQ+ people, political prisoners, and others) organized and carried out by the Nazi government under Adolf Hitler during World War II. It is one of the greatest atrocities in human history."},
+    {cat:"Plot — The Handkerchief",
+     q:"How does the special HANDKERCHIEF help protect the Jewish people escaping on the boat?",
+     choices:["It is used as a white flag to signal peaceful surrender to the Nazi soldiers.",
+              "It contains the scent of meat that distracts the dogs' sense of smell — so the soldiers' dogs cannot track the hidden passengers.",
+              "It is a map hidden inside showing the secret escape route to Sweden.",
+              "It is used to identify resistance members to each other safely."],
+     correct:1,
+     feedback:"The handkerchief is soaked in a mixture (dried rabbit blood and a special powder) that completely distracts dogs' ability to smell. When Nazi soldiers search the basket and boat with their trained dogs, the dogs cannot detect the Jewish passengers hidden below deck. This scientific trick, created by the resistance, is what makes the escape possible!"},
+    {cat:"Plot — The Fake Funeral",
+     q:"What was hidden inside the casket at the fake funeral for Great-Aunt Birte?",
+     choices:["Money and gold to help the Jewish families start a new life in Sweden.",
+              "Warm clothing and coats for the Jewish people who would soon hide on the escape boat.",
+              "Secret letters and fake escape documents.",
+              "Food and medicine for the long journey to Sweden."],
+     correct:1,
+     feedback:"The casket contained warm clothing and coats for the Jewish people who would soon be hiding on the cold fishing boat to Sweden. The fake funeral was a brilliant cover story — it allowed the family to gather Jewish refugees and distribute supplies without making the Nazi soldiers suspicious. 'Great-Aunt Birte' never actually existed!"},
+    {cat:"Character — Star of David Necklace",
+     q:"Why does Annemarie tear off Ellen's Star of David necklace when the soldiers arrive?",
+     choices:["Annemarie is angry at Ellen and wants to hurt her feelings.",
+              "The necklace is broken and Annemarie is simply trying to fix it.",
+              "The Star of David is a Jewish symbol — if the soldiers see it, they will know Ellen is Jewish and arrest her.",
+              "The soldiers ordered all children to remove jewelry for a safety inspection."],
+     correct:2,
+     feedback:"The Star of David is an immediately recognizable symbol of Judaism. If the Nazi soldiers saw it around Ellen's neck, they would instantly know she is Jewish and arrest her. Annemarie acts with incredible speed and bravery — ripping the necklace off without explanation — to protect her friend's life in that dangerous moment."},
+    {cat:"Character — Annemarie's Bravery",
+     q:"Why does Annemarie ACT LIKE HER LITTLE SISTER KIRSTI when the soldiers stop her in the woods?",
+     choices:["She completely forgets who she is because she is so terrified.",
+              "She pretends to be young, innocent, and clueless like a little child so the soldiers won't see her as a threat and will let her pass.",
+              "She is trying to make the soldiers laugh so they drop their guard.",
+              "Kirsti secretly taught her a special trick for getting past guards."],
+     correct:1,
+     feedback:"Annemarie uses brilliant, brave acting to seem like a small, harmless, clueless little child — exactly like Kirsti would behave. Nazi soldiers are far less suspicious of young children. By playing 'dumb' and childlike, she lowers their suspicion and is able to pass through with the critical packet. It's an act of real courage."},
+    {cat:"Character — Mama's Perspective",
+     q:"How does Mama PROBABLY feel when Annemarie takes the dangerous task of delivering the packet alone? Why doesn't she stop her?",
+     choices:["Mama feels relieved and happy — she actually wanted Annemarie to go all along.",
+              "Mama is probably scared for Annemarie's safety, but she doesn't stop her because she knows the packet must reach the boat or the escape will fail — the mission is bigger than one person.",
+              "Mama doesn't notice Annemarie leaving because she is asleep.",
+              "Mama tries to stop her, but Annemarie sneaks out anyway while Mama isn't looking."],
+     correct:1,
+     feedback:"Mama is almost certainly terrified — this is her child running alone through the woods toward armed Nazi soldiers with a secret packet! But she doesn't stop Annemarie because she understands the stakes completely: without that packet, the escape fails and many Jewish lives will be lost. The mission to save lives must come first."},
+    {cat:"Main Conflict",
+     q:"What is the MAIN CONFLICT in Number the Stars?",
+     choices:["Annemarie and Ellen are fighting over a misunderstanding at school.",
+              "Annemarie's family is struggling to find enough food to eat during the German occupation.",
+              "Annemarie's family is trying to save Ellen's Jewish family from the Nazi soldiers who want to arrest and deport them.",
+              "Annemarie wants to move to Sweden but her parents refuse to allow it."],
+     correct:2,
+     feedback:"The main conflict is PERSON vs. SOCIETY — Annemarie's family (and the Danish resistance movement) fights against the oppressive, murderous Nazi occupation to rescue Jewish people from deportation and death. It is the story of ordinary, everyday people finding extraordinary courage to stand up against a powerful and evil government."}
+  ]},
+
+  // 4 — NINE, TEN
+  {id:4, emoji:"✈️", color:"#fd79a8",
+   title:"Nine, Ten",
+   desc:"By Nora Raleigh Baskin — Historical Fiction",
+   questions:[
+    {cat:"Character — Will",
+     q:"Why was Will at the Chicago airport on September 9th, before 9/11?",
+     choices:["He was flying to New York City for a fun family vacation.",
+              "He was at the airport after going on a trip to Florida over the one year anniversary of his father's death",
+              "He was going on a school field trip to the airport.",
+              "He was helping his parents move to a completely new city."],
+     correct:1,
+     feedback:"Will was at the Chicago airport because of a complicated, painful personal situation connected to his family. His presence there — and what he witnesses and experiences — sets up his character's conflict and connects him to the other characters and the larger events of 9/11."},
+    {cat:"Character — Sergio",
+     q:"What does Sergio get caught doing in the subway? Does he face a consequence at school?",
+     choices:["He is caught skipping school to ride the subway, and YES — he faces a consequence at school for cutting class.",
+              "He is caught stealing food from a vendor, and the police let him go with a warning.",
+              "He is caught spray-painting graffiti, and his parents are called.",
+              "He is caught riding without a subway ticket, and he has to pay a fine."],
+     correct:0,
+     feedback:"Sergio skips school and rides the subway — and he gets caught. He does face a consequence at school for cutting class. This is an important part of Sergio's character arc — he is wrestling with making good choices versus taking the easy or rebellious way out. It connects to the theme of 'doing the right thing no matter what.'"},
+    {cat:"Character — Aimee",
+     q:"Why do the girls at Aimee's new school assume her parents are getting a DIVORCE?",
+     choices:["Aimee told them directly that her parents fight all the time.",
+              "They assume it because Aimee's mom travels a lot for her new job and since lots of people move to California for divorces— the girls interpret this as separation.",
+              "Aimee's parents are actually already divorced and she just didn't realize it yet.",
+              "The girls overheard Aimee's parents arguing outside the school building."],
+     correct:1,
+     feedback:"The girls assume divorce because many people move to CA for divorce, and Aimee's mom travels constantly for her new job so she's rarely home, and the parents are essentially living apart. The girls at school see this as a sign of separation or divorce. This misunderstanding adds to Aimee's feelings of loneliness and anxiety, which are central to her character."},
+    {cat:"Character — Naheed",
+     q:"True or False: Naheed is PROUD to be Muslim, but she doesn't like the extra attention that wearing her hijab puts on her — making her stand out from other students.",
+     choices:["TRUE — Naheed is proud of her faith but feels uncomfortable with the attention and stares her hijab attracts.",
+              "FALSE — Naheed is ashamed of being Muslim and does not want to wear the hijab at all.",
+              "TRUE — Naheed loves wearing her hijab and has absolutely no problem with any attention it brings.",
+              "FALSE — Naheed does not wear a hijab anywhere in this story."],
+     correct:0,
+     feedback:"TRUE. Naheed has a strong, proud Muslim identity and deeply values her faith. However, she feels the very real weight of other people's stares, curiosity, and sometimes prejudice because of her hijab — especially after 9/11, when anti-Muslim sentiment dramatically increases. She wants to be seen as a PERSON, not just as a Muslim."},
+    {cat:"Character — Aimee's Mom",
+     q:"Why was Aimee's mom going to LEAVE A MESSAGE on the machine instead of waiting for Aimee to answer on the morning of September 11th?",
+     choices:["Aimee's phone battery was completely dead.",
+              "There is a 3-hour TIME DIFFERENCE between New York (East Coast) and Los Angeles (West Coast) — it would be too early and Aimee would still be sleeping.",
+              "Aimee's mom did not actually want to have a conversation with her daughter that morning.",
+              "Aimee's mom only had the house landline number, not Aimee's cell phone number."],
+     correct:1,
+     feedback:"There is a 3-hour time difference between New York City (East Coast) and Los Angeles (West Coast). Aimee's mom was calling from New York in the morning — but in LA, it would still be very early and Aimee would still be asleep. So she planned to leave a message rather than wake her daughter. This detail becomes deeply significant on 9/11."},
+    {cat:"Plot — Ground Zero",
+     q:"Who PROTECTS Naheed's family at Ground Zero in the 'One Year Later' section?",
+     choices:["Will and Sergio.",
+              "A crowd of fellow Americans — strangers — who spontaneously form a protective circle around the family.",
+              "NYC firefighters, including Gideon",
+              "All the above help protect them."],
+     correct:3,
+     feedback:"In the powerful and moving 'One Year Later' section, many people, including Gideon, Will, and Sergio, and other strangers spontaneously form a protective circle around Naheed's family at the Ground Zero memorial — shielding them from any hostility or anti-Muslim prejudice. This moment shows that love, solidarity, and human decency are stronger than hatred and fear."},
+    {cat:"Character — Aimee's Feelings",
+     q:"True or False: Aimee is GLAD her mom got a new job that requires a lot of travel, because her mom was always in her business and that was annoying.",
+     choices:["TRUE — Aimee is very happy to finally have more freedom and space from her mom.",
+              "FALSE — Aimee actually MISSES her mom deeply and wishes she were home more."],
+     correct:1,
+     feedback:"FALSE. Aimee's central conflict in the story is that she deeply MISSES her mom and feels scared and lonely without her. She is NOT happy about her mom's travel — she feels abandoned, anxious, and sad. This longing for her mother is what makes the events of 9/11 especially terrifying for Aimee."},
+    {cat:"Big Theme",
      q:"Which of the following is a THEME in Nine, Ten?",
      choices:["Over time, grief always gets easier and we learn to slowly move on.",
               "Being lonely is hard, but finding someone who truly understands you helps you open up and connect.",
               "You should always try do the right thing — even when it is difficult.",
               "All of the above are possible themes"],
-     correct:3, 
-     feedback:"All three are key themes in Nine, Ten. Each character experiences loneliness. Grief is experienced in different ways by Will, Sergio, and even Aimee. Doing the right thing is a part of the stories of all four characters, as well."},
-    {cat:"Character Plot",
-     q:"Why is Will at the airport?",
-     choices:["He is running away from his problems at home.",
-              "Flying home for a family trip after grieving the loss of his dad.",
-              "He is waiting to pick up a close friend.",
-              "He works there part-time after school."],
-     correct:1,
-     feedback:"Correct! Will is at the airport flying home for a family trip after grieving the loss of his dad."}
-   ]}
+     correct:3,
+     feedback:"All three are key theme in Nine,Ten. Each character experiences loneliness. Grief is experienced in different ways by Will, Sergio, and even Aimee. Doing the right thing is a part of the stories of all four characters, as well. "}
+  ]}
 ];
 
-// Core Application Variables
-let globalPoints = parseInt(localStorage.getItem('student_wallet')) || 0;
-let classTotalPoints = parseInt(localStorage.getItem('class_brownie_total')) || 0;
-let classTargetGoal = 15000; // Perfect balanced sweet spot for 15 kids
-
+// =========================================================
+// APP STATE
+// =========================================================
 let currentBook = null;
-let currentMode = '';
-let questionPool = [];
-let currentQIdx = 0;
-let quizSessionScore = 0;
+let quizQuestions = [];
+let currentQIndex = 0;
+let score = 0;
 let streak = 0;
-let flashIdx = 0;
-let isFlipped = false;
+let answered = false;
+let lastMode = 'book';
+let flashQuestions = [];
+let flashIndex = 0;
+let flashFlipped = false;
 
-// Synchronize balance interface nodes 
-function updateWalletDisplays() {
-    document.getElementById('my-wallet').innerText = globalPoints;
-    document.getElementById('shop-wallet').innerText = globalPoints;
-    localStorage.setItem('student_wallet', globalPoints);
-    updateClassProgressBar();
+// =========================================================
+// NAVIGATION
+// =========================================================
+function setColor(c) {
+  document.documentElement.style.setProperty('--cc', c);
 }
-
-// Recalculate visual loading widths for progress bars
-function updateClassProgressBar() {
-    document.getElementById('class-total-disp').innerText = classTotalPoints;
-    document.getElementById('class-target-disp').innerText = classTargetGoal;
-    let pct = Math.min((classTotalPoints / classTargetGoal) * 100, 100);
-    document.getElementById('class-progress').style.width = pct + '%';
-    localStorage.setItem('class_brownie_total', classTotalPoints);
-}
-
-function selectBook(idx) {
-  currentBook = BOOKS[idx];
-  if(!currentBook || !currentBook.title) return;
-  document.getElementById('bh-emoji').innerText = currentBook.emoji || "📖";
-  document.getElementById('bh-title').innerText = currentBook.title;
-  document.getElementById('bh-sub').innerText = currentBook.desc || "";
-  switchScreen('book-screen');
-}
-
-function goHome() { switchScreen('home'); updateWalletDisplays(); }
-function goBook() { switchScreen('book-screen'); }
-
-function switchScreen(id) {
+function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
-  window.scrollTo(0,0);
-  if(id === 'home' || id === 'shop-screen') updateWalletDisplays();
+}
+function selectBook(id) {
+  currentBook = BOOKS[id];
+  setColor(currentBook.color);
+  document.getElementById('bh-emoji').textContent = currentBook.emoji;
+  document.getElementById('bh-title').textContent = currentBook.title;
+  document.getElementById('bh-sub').textContent = currentBook.desc;
+  showScreen('book-screen');
+}
+function goHome() { showScreen('home'); }
+function goBook() { showScreen('book-screen'); }
+
+// =========================================================
+// QUIZ
+// =========================================================
+function shuffle(arr) {
+  let a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
 }
 
 function startQuiz(mode) {
-  currentMode = mode;
-  quizSessionScore = 0;
-  streak = 0;
-  currentQIdx = 0;
-  
-  let bQ = currentBook.questions || [];
-  let sQ = SKILLS_Q || [];
-  
-  if(mode === 'book') questionPool = [...bQ];
-  else if(mode === 'skills') questionPool = [...sQ];
-  else questionPool = [...bQ, ...sQ];
-  
-  if(questionPool.length === 0) {
-    alert("No questions found for this selection!");
-    return;
-  }
-  
-  document.getElementById('score-disp').innerText = "⭐ 0 pts";
-  document.getElementById('streak-disp').innerText = "";
-  switchScreen('quiz-screen');
-  showQuestion();
+  lastMode = mode;
+  currentQIndex = 0; score = 0; streak = 0;
+  if (mode === 'book') quizQuestions = shuffle([...currentBook.questions]);
+  else if (mode === 'skills') quizQuestions = shuffle([...SKILLS_Q]);
+  else quizQuestions = shuffle([...currentBook.questions, ...SKILLS_Q]);
+  showScreen('quiz-screen');
+  renderQuestion();
 }
 
-function showQuestion() {
-  let q = questionPool[currentQIdx];
-  document.getElementById('q-info').innerText = `Question ${currentQIdx + 1} / ${questionPool.length}`;
-  document.getElementById('prog-fill').style.width = `${((currentQIdx) / questionPool.length) * 100}%`;
-  document.getElementById('q-cat').innerText = q.cat;
-  document.getElementById('q-text').innerText = q.q;
-  
-  let cDiv = document.getElementById('choices');
-  cDiv.innerHTML = '';
-  
-  let fb = document.getElementById('feedback');
+function retryQuiz() { startQuiz(lastMode); }
+
+function renderQuestion() {
+  const q = quizQuestions[currentQIndex];
+  answered = false;
+  document.getElementById('q-info').textContent = `Question ${currentQIndex + 1} / ${quizQuestions.length}`;
+  document.getElementById('score-disp').textContent = `⭐ ${score} pts`;
+  document.getElementById('streak-disp').textContent = streak >= 2 ? `🔥 ${streak} streak!` : '';
+  document.getElementById('prog-fill').style.width = (currentQIndex / quizQuestions.length * 100) + '%';
+  document.getElementById('q-cat').textContent = q.cat;
+  document.getElementById('q-text').textContent = q.q;
+  const fb = document.getElementById('feedback');
   fb.classList.remove('show', 'wrong-fb');
+  fb.textContent = '';
   document.getElementById('next-btn').classList.remove('show');
-  
+  const choicesEl = document.getElementById('choices');
+  choicesEl.innerHTML = '';
+  const letters = ['A', 'B', 'C', 'D'];
   q.choices.forEach((c, i) => {
-    let btn = document.createElement('button');
+    const btn = document.createElement('button');
     btn.className = 'choice-btn';
-    btn.innerText = c;
-    btn.onclick = () => checkAnswer(i, btn);
-    cDiv.appendChild(btn);
+    btn.innerHTML = `<span style="font-weight:800;color:var(--cc);margin-right:.5rem">${letters[i]}.</span>${c}`;
+    btn.onclick = () => selectAnswer(i, q, btn);
+    choicesEl.appendChild(btn);
   });
 }
 
-function checkAnswer(chosenIdx, btnEl) {
-  let q = questionPool[currentQIdx];
-  let btns = document.querySelectorAll('.choice-btn');
-  btns.forEach(b => b.classList.add('locked'));
-  
-  let fb = document.getElementById('feedback');
-  fb.innerText = q.feedback || "Good job!";
-  fb.classList.add('show');
-  
-  if(chosenIdx === q.correct) {
-    btnEl.classList.add('correct');
-    let gained = 10 + (streak * 2);
-    quizSessionScore += gained;
-    globalPoints += gained; // Deposit points into user profile bank
-    streak++;
-    document.getElementById('score-disp').innerText = `⭐ ${quizSessionScore} pts`;
-    document.getElementById('streak-disp').innerText = streak > 1 ? `🔥 ${streak} Streak!` : '';
-    triggerConfetti();
+function selectAnswer(idx, q, btn) {
+  if (answered) return;
+  answered = true;
+  document.querySelectorAll('.choice-btn').forEach(b => b.classList.add('locked'));
+  const fb = document.getElementById('feedback');
+  if (idx === q.correct) {
+    btn.classList.add('correct');
+    const pts = 10 + (streak >= 2 ? streak * 2 : 0);
+    score += pts; streak++;
+    fb.textContent = `✅ Correct! +${pts} points — ${q.feedback}`;
+    fb.classList.remove('wrong-fb');
   } else {
-    btnEl.classList.add('wrong');
-    btns[q.correct].classList.add('correct');
+    btn.classList.add('wrong');
+    document.querySelectorAll('.choice-btn')[q.correct].classList.add('correct');
     streak = 0;
-    document.getElementById('streak-disp').innerText = '';
+    fb.textContent = `❌ Not quite. ${q.feedback}`;
     fb.classList.add('wrong-fb');
   }
+  fb.classList.add('show');
   document.getElementById('next-btn').classList.add('show');
+  document.getElementById('score-disp').textContent = `⭐ ${score} pts`;
+  document.getElementById('streak-disp').textContent = streak >= 2 ? `🔥 ${streak} streak!` : '';
 }
 
 function nextQuestion() {
-  currentQIdx++;
-  if(currentQIdx < questionPool.length) {
-    showQuestion();
-  } else {
-    endGame();
+  currentQIndex++;
+  if (currentQIndex >= quizQuestions.length) showResults();
+  else renderQuestion();
+}
+
+// =========================================================
+// RESULTS
+// =========================================================
+function showResults() {
+  const total = quizQuestions.length;
+  const pct = score / (total * 10);
+  let trophy, title, stars, msg;
+  if (pct >= .9) { trophy = '🏆'; title = 'Amazing!'; stars = '⭐⭐⭐'; msg = "You're a reading champion! You know this material inside and out. Excellent work!"; }
+  else if (pct >= .7) { trophy = '🥇'; title = 'Great Job!'; stars = '⭐⭐✨'; msg = "Excellent work! Review the questions you missed and try again to get a perfect score."; }
+  else if (pct >= .5) { trophy = '🥈'; title = 'Good Effort!'; stars = '⭐✨✨'; msg = "You're getting there! Try the flash cards to review, then take the quiz again."; }
+  else { trophy = '📚'; title = 'Keep Studying!'; stars = '✨✨✨'; msg = "Don't give up — use the flash cards first, then try the quiz again. You can do it!"; }
+  document.getElementById('trophy-emoji').textContent = trophy;
+  document.getElementById('result-title').textContent = title;
+  document.getElementById('result-big').textContent = `${score} pts`;
+  document.getElementById('result-stars').textContent = stars;
+  document.getElementById('result-msg').textContent = msg;
+  showScreen('results-screen');
+  if (pct >= .7) launchConfetti();
+}
+
+function launchConfetti() {
+  const colors = ['#f7c948', '#ff6b6b', '#4ecdc4', '#a29bfe', '#55efc4', '#fd79a8'];
+  for (let i = 0; i < 70; i++) {
+    setTimeout(() => {
+      const el = document.createElement('div');
+      el.className = 'confetti-piece';
+      el.style.left = Math.random() * 100 + 'vw';
+      el.style.background = colors[Math.floor(Math.random() * colors.length)];
+      el.style.animationDuration = (1.5 + Math.random() * 2) + 's';
+      el.style.animationDelay = (Math.random() * .5) + 's';
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), 3500);
+    }, i * 30);
   }
 }
 
-function endGame() {
-  switchScreen('results-screen');
-  document.getElementById('result-big').innerText = `${quizSessionScore} pts`;
-  localStorage.setItem('student_wallet', globalPoints);
-  
-  // Custom message ranking
-  let msg = "Keep studying to help fund the class brownie goal!";
-  if(quizSessionScore > 80) msg = "Excellent run! Go deposit those points into the Brownie Fund!";
-  document.getElementById('result-msg').innerText = msg;
-}
-
-function retryQuiz() { startQuiz(currentMode); }
-
+// =========================================================
+// FLASH CARDS
+// =========================================================
 function startFlash() {
-  let bQ = currentBook.questions || [];
-  questionPool = bQ.length > 0 ? [...bQ] : [{cat:"Notice", q:"No items ready.", choices:["None"], correct:0, feedback:"Check back later."}];
-  flashIdx = 0;
-  document.getElementById('fl-title').innerText = currentBook.title;
-  switchScreen('flash-screen');
-  showFlashCard();
+  flashIndex = 0; flashFlipped = false;
+  flashQuestions = shuffle([...currentBook.questions, ...SKILLS_Q]);
+  document.getElementById('fl-title').textContent = currentBook.title;
+  document.getElementById('fl-mode-label').textContent = `${flashQuestions.length} cards — tap to flip`;
+  showScreen('flash-screen');
+  renderFlash();
 }
 
-function showFlashCard() {
-  isFlipped = false;
-  let q = questionPool[flashIdx];
-  document.getElementById('fl-counter').innerText = `${flashIdx + 1} / ${questionPool.length}`;
-  document.getElementById('fl-front').innerText = q.q;
-  document.getElementById('fl-back').innerText = `Correct Answer:\n→ ${q.choices[q.correct]}\n\n${q.feedback}`;
+function renderFlash() {
+  const q = flashQuestions[flashIndex];
+  document.getElementById('fl-counter').textContent = `${flashIndex + 1} / ${flashQuestions.length}`;
+  document.getElementById('fl-front').textContent = q.q;
+  const answer = `${String.fromCharCode(65 + q.correct)}. ${q.choices[q.correct]}\n\n💡 ${q.feedback}`;
+  document.getElementById('fl-back').textContent = answer;
   document.getElementById('fl-back').style.display = 'none';
+  document.querySelector('.flash-hint').textContent = 'Tap to see the answer!';
+  flashFlipped = false;
 }
 
 function flipCard() {
-  isFlipped = !isFlipped;
-  document.getElementById('fl-back').style.display = isFlipped ? 'block' : 'none';
+  flashFlipped = !flashFlipped;
+  document.getElementById('fl-back').style.display = flashFlipped ? 'block' : 'none';
+  document.querySelector('.flash-hint').textContent = flashFlipped ? 'Tap to hide answer' : 'Tap to see the answer!';
+}
+function flashNext() { if (flashIndex < flashQuestions.length - 1) { flashIndex++; renderFlash(); } }
+function flashPrev() { if (flashIndex > 0) { flashIndex--; renderFlash(); } }
+// =========================================================
+// BROWNIE STORE & CLASS GOAL (PERSISTENCE)
+// =========================================================
+let classTarget = 15000;
+
+window.onload = function() {
+    updateDisplays();
+};
+
+function updateDisplays() {
+    let myWallet = parseInt(localStorage.getItem('lit_wallet') || '0');
+    let classTotal = parseInt(localStorage.getItem('lit_class_total') || '0');
+
+    document.getElementById('my-wallet').textContent = myWallet;
+    document.getElementById('shop-wallet').textContent = myWallet;
+    document.getElementById('class-total-disp').textContent = classTotal;
+    document.getElementById('class-target-disp').textContent = classTarget;
+
+    let pct = Math.min((classTotal / classTarget) * 100, 100);
+    document.getElementById('class-progress').style.width = pct + '%';
 }
 
-function flashNext() { if(flashIdx < questionPool.length - 1) { flashIdx++; showFlashCard(); } }
-function flashPrev() { if(flashIdx > 0) { flashIdx--; showFlashCard(); } }
+const originalShowResults = showResults;
+showResults = function() {
+    originalShowResults();
+    let currentWallet = parseInt(localStorage.getItem('lit_wallet') || '0');
+    localStorage.setItem('lit_wallet', currentWallet + score);
+    updateDisplays();
+};
 
-function triggerConfetti() {
-  for(let i=0; i<30; i++) {
-    let p = document.createElement('div');
-    p.className = 'confetti-piece';
-    p.style.left = Math.random()*100 + 'vw';
-    p.style.backgroundColor = ['#f7c948','#4ecdc4','#ff6b6b','#55efc4'][Math.floor(Math.random()*4)];
-    p.style.animationDuration = (Math.random()*1.5 + 1) + 's';
-    p.style.animationDelay = (Math.random()*0.2) + 's';
-    document.body.appendChild(p);
-    setTimeout(() => p.remove(), 2500);
-  }
+function switchScreen(id) {
+    showScreen(id);
+    if(id === 'shop-screen') updateDisplays();
 }
 
-// =========================================================
-// BROWNIE SHOP SYSTEM & TEACHER MANAGEMENT CONTROLS
-// =========================================================
 function generateContributionCode() {
-    if (globalPoints <= 0) {
-        alert("You don't have any points in your bank balance to contribute right now! Go play a few quiz sets to earn points first.");
+    let myWallet = parseInt(localStorage.getItem('lit_wallet') || '0');
+    if (myWallet <= 0) {
+        alert("You don't have any points to donate right now! Go play a quiz!");
         return;
     }
+
+    let classTotal = parseInt(localStorage.getItem('lit_class_total') || '0');
     
-    let donatedAmt = globalPoints;
-    let randomStr = Math.random().toString(36).substring(2, 7).toUpperCase();
-    let computedCode = `BRWN-${donatedAmt}-${randomStr}`;
+    localStorage.setItem('lit_class_total', classTotal + myWallet);
+    localStorage.setItem('lit_wallet', '0');
+
+    let receiptCode = `BROWNIE-DONATE-${Math.floor(1000 + Math.random() * 9000)}-PTS-${myWallet}`;
     
-    // Clear student balance locally
-    globalPoints = 0;
-    updateWalletDisplays();
-    
-    // Display tracking data output text
-    let box = document.getElementById('code-box');
-    box.innerText = computedCode;
-    box.style.display = 'block';
+    let codeBox = document.getElementById('code-box');
+    codeBox.textContent = receiptCode;
+    codeBox.style.display = 'block';
     document.getElementById('shop-instruction').style.display = 'block';
-    
-    // Copy directly to user clipboard automatically
-    navigator.clipboard.writeText(computedCode).catch(err => {});
+
+    navigator.clipboard.writeText(receiptCode);
+    updateDisplays();
 }
 
+// =========================================================
+// TEACHER BACKDOOR PANEL
+// =========================================================
 function teacherPanel() {
-    let password = prompt("Teacher Control Mode: Enter secure keyword to continue:");
-    if (password === 'brownie') {
-        let action = prompt("Select Management Command:\nType 'CODE' to paste and redeem a student point code\nType 'SET' to override/manually change the live class goal bar points total");
-        
-        if (action && action.toUpperCase() === 'CODE') {
-            let codeIn = prompt("Paste the student's submission code text string here:");
-            if (codeIn && codeIn.startsWith("BRWN-")) {
-                let segments = codeIn.split("-");
-                let pointsToAdd = parseInt(segments[1]);
-                if (!isNaN(pointsToAdd)) {
-                    classTotalPoints += pointsToAdd;
-                    updateClassProgressBar();
-                    alert(`Point verified! Added +${pointsToAdd} points into the class goal track!`);
-                }
-            } else {
-                alert("Invalid verification string sequence form.");
+    let pass = prompt("Enter Teacher Security PIN:");
+    if (pass === "1234") {
+        let action = prompt("Type 'set' to adjust total class points, or 'reset' to completely clear the app cache:");
+        if (action === "set") {
+            let val = prompt("Enter new absolute total class points:");
+            if (val !== null && !isNaN(val)) {
+                localStorage.setItem('lit_class_total', parseInt(val));
+                updateDisplays();
             }
-        } else if (action && action.toUpperCase() === 'SET') {
-            let manualAmt = parseInt(prompt("Specify what the exact new class progress total value should be set to:", classTotalPoints));
-            if (!isNaN(manualAmt)) {
-                classTotalPoints = manualAmt;
-                updateClassProgressBar();
+        } else if (action === "reset") {
+            if (confirm("Are you absolute sure you want to clear all student wallets and progress metrics?")) {
+                localStorage.clear();
+                updateDisplays();
             }
         }
+    } else {
+        alert("Incorrect PIN access denied.");
     }
 }
-
-// Run updates upon asset initialization
-window.onload = function() {
-    updateWalletDisplays();
-};
 </script>
 </body>
 </html>

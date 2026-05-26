@@ -984,14 +984,13 @@ function updateDisplays() {
     let pct = Math.min((classTotal / classTarget) * 100, 100);
     document.getElementById('class-progress').style.width = pct + '%';
 }
-
 const originalShowResults = showResults;
 showResults = function() {
     originalShowResults();
-    let currentWallet = parseInt(localStorage.getItem('lit_wallet') || '0');
-    localStorage.setItem('lit_wallet', currentWallet + score);
+    // No points added here because they already saved instantly on every click!
     updateDisplays();
 };
+
 
 function switchScreen(id) {
     showScreen(id);

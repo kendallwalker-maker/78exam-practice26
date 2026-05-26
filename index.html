@@ -815,8 +815,14 @@ function selectBook(id) {
   document.getElementById('bh-sub').textContent = currentBook.desc;
   showScreen('book-screen');
 }
-function goHome() { showScreen('home'); }
-function goBook() { showScreen('book-screen'); }
+function goHome() { 
+  showScreen('home'); 
+  updateDisplays(); // Forces home screen wallet to update!
+}
+function goBook() { 
+  showScreen('book-screen'); 
+  updateDisplays(); // Forces book screen wallet to update!
+}
 
 // =========================================================
 // QUIZ
@@ -994,7 +1000,7 @@ showResults = function() {
 
 function switchScreen(id) {
     showScreen(id);
-    if(id === 'shop-screen') updateDisplays();
+    updateDisplays(); // Keeps totals accurate everywhere!
 }
 
 function generateContributionCode() {

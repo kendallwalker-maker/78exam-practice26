@@ -786,6 +786,9 @@ const BOOKS = [
 // =========================================================
 // APP STATE
 // =========================================================
+// =========================================================
+// APP STATE
+// =========================================================
 let currentBook = null;
 let quizQuestions = [];
 let currentQIndex = 0;
@@ -798,15 +801,17 @@ let flashIndex = 0;
 let flashFlipped = false;
 
 // =========================================================
-// NAVIGATION
+// NAVIGATION & CODES
 // =========================================================
 function setColor(c) {
   document.documentElement.style.setProperty('--cc', c);
 }
+
 function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
 }
+
 function selectBook(id) {
   currentBook = BOOKS[id];
   setColor(currentBook.color);
@@ -814,18 +819,26 @@ function selectBook(id) {
   document.getElementById('bh-title').textContent = currentBook.title;
   document.getElementById('bh-sub').textContent = currentBook.desc;
   showScreen('book-screen');
+  updateDisplays(); // Refresh when opening a book layout
 }
+
 function goHome() { 
   showScreen('home'); 
-  updateDisplays(); // Forces home screen wallet to update!
+  updateDisplays(); // Forces home screen wallet to update instantly!
 }
+
 function goBook() { 
   showScreen('book-screen'); 
-  updateDisplays(); // Forces book screen wallet to update!
+  updateDisplays(); // Forces book screen wallet to update instantly!
+}
+
+function switchScreen(id) {
+  showScreen(id);
+  updateDisplays(); // Keeps totals accurate everywhere!
 }
 
 // =========================================================
-// QUIZ
+// SHUFFLE SYSTEM
 // =========================================================
 function shuffle(arr) {
   let a = [...arr];
@@ -836,6 +849,9 @@ function shuffle(arr) {
   return a;
 }
 
+// =========================================================
+// QUIZ ENGINE
+// =========================================================
 function startQuiz(mode) {
   lastMode = mode;
   currentQIndex = 0; score = 0; streak = 0;
@@ -878,10 +894,22 @@ function selectAnswer(idx, q, btn) {
   answered = true;
   document.querySelectorAll('.choice-btn').forEach(b => b.classList.add('locked'));
   const fb = document.getElementById('feedback');
+  
   if (idx === q.correct) {
     btn.classList.add('correct');
+    
+    // Calculate the points earned for this specific correct answer
     const pts = 10 + (streak >= 2 ? streak * 2 : 0);
-    score += pts; streak++;
+    score += pts; 
+    streak++;
+    
+    // PAY-AS-YOU-GO: Instantly save points to the browser database right now!
+    let currentWallet = parseInt(localStorage.getItem('lit_wallet') || '0');
+    localStorage.setItem('lit_wallet', currentWallet + pts);
+    
+    // Refresh the wallet counters on screen instantly
+    updateDisplays();
+    
     fb.textContent = `✅ Correct! +${pts} points — ${q.feedback}`;
     fb.classList.remove('wrong-fb');
   } else {
@@ -904,7 +932,7 @@ function nextQuestion() {
 }
 
 // =========================================================
-// RESULTS
+// RESULTS & CONFETTI
 // =========================================================
 function showResults() {
   const total = quizQuestions.length;
@@ -920,6 +948,7 @@ function showResults() {
   document.getElementById('result-stars').textContent = stars;
   document.getElementById('result-msg').textContent = msg;
   showScreen('results-screen');
+  updateDisplays();
   if (pct >= .7) launchConfetti();
 }
 
@@ -969,85 +998,82 @@ function flipCard() {
 }
 function flashNext() { if (flashIndex < flashQuestions.length - 1) { flashIndex++; renderFlash(); } }
 function flashPrev() { if (flashIndex > 0) { flashIndex--; renderFlash(); } }
+
 // =========================================================
-// BROWNIE STORE & CLASS GOAL (PERSISTENCE)
+// BROWNIE STORE & DATA SYNC (PERSISTENCE)
 // =========================================================
 let classTarget = 15000;
 
 window.onload = function() {
-    updateDisplays();
+  updateDisplays();
 };
 
 function updateDisplays() {
-    let myWallet = parseInt(localStorage.getItem('lit_wallet') || '0');
-    let classTotal = parseInt(localStorage.getItem('lit_class_total') || '0');
+  let myWallet = parseInt(localStorage.getItem('lit_wallet') || '0');
+  let classTotal = parseInt(localStorage.getItem('lit_class_total') || '0');
 
-    document.getElementById('my-wallet').textContent = myWallet;
-    document.getElementById('shop-wallet').textContent = myWallet;
-    document.getElementById('class-total-disp').textContent = classTotal;
-    document.getElementById('class-target-disp').textContent = classTarget;
+  // Push total out to every possible point tracking ID element across screens
+  const walletElements = ['my-wallet', 'shop-wallet', 'home-wallet-disp', 'book-wallet-disp'];
+  walletElements.forEach(id => {
+    let el = document.getElementById(id);
+    if (el) el.textContent = myWallet;
+  });
 
+  let classTotalDisp = document.getElementById('class-total-disp');
+  let classTargetDisp = document.getElementById('class-target-disp');
+  if (classTotalDisp) classTotalDisp.textContent = classTotal;
+  if (classTargetDisp) classTargetDisp.textContent = classTarget;
+
+  let progressBar = document.getElementById('class-progress');
+  if (progressBar) {
     let pct = Math.min((classTotal / classTarget) * 100, 100);
-    document.getElementById('class-progress').style.width = pct + '%';
-}
-const originalShowResults = showResults;
-showResults = function() {
-    originalShowResults();
-    // No points added here because they already saved instantly on every click!
-    updateDisplays();
-};
-
-
-function switchScreen(id) {
-    showScreen(id);
-    updateDisplays(); // Keeps totals accurate everywhere!
+    progressBar.style.width = pct + '%';
+  }
 }
 
 function generateContributionCode() {
-    let myWallet = parseInt(localStorage.getItem('lit_wallet') || '0');
-    if (myWallet <= 0) {
-        alert("You don't have any points to donate right now! Go play a quiz!");
-        return;
-    }
+  let myWallet = parseInt(localStorage.getItem('lit_wallet') || '0');
+  if (myWallet <= 0) {
+    alert("You don't have any points to donate right now! Go play a quiz!");
+    return;
+  }
 
-    let classTotal = parseInt(localStorage.getItem('lit_class_total') || '0');
-    
-    localStorage.setItem('lit_class_total', classTotal + myWallet);
-    localStorage.setItem('lit_wallet', '0');
+  let classTotal = parseInt(localStorage.getItem('lit_class_total') || '0');
+  localStorage.setItem('lit_class_total', classTotal + myWallet);
+  localStorage.setItem('lit_wallet', '0');
 
-    let receiptCode = `BROWNIE-DONATE-${Math.floor(1000 + Math.random() * 9000)}-PTS-${myWallet}`;
-    
-    let codeBox = document.getElementById('code-box');
-    codeBox.textContent = receiptCode;
-    codeBox.style.display = 'block';
-    document.getElementById('shop-instruction').style.display = 'block';
+  let receiptCode = `BROWNIE-DONATE-${Math.floor(1000 + Math.random() * 9000)}-PTS-${myWallet}`;
+  let codeBox = document.getElementById('code-box');
+  codeBox.textContent = receiptCode;
+  codeBox.style.display = 'block';
+  document.getElementById('shop-instruction').style.display = 'block';
 
-    navigator.clipboard.writeText(receiptCode);
-    updateDisplays();
+  navigator.clipboard.writeText(receiptCode);
+  updateDisplays();
 }
 
 // =========================================================
 // TEACHER BACKDOOR PANEL
 // =========================================================
 function teacherPanel() {
-    let pass = prompt("Enter Teacher Security PIN:");
-    if (pass === "6718") {
-        let action = prompt("Type 'set' to adjust total class points, or 'reset' to completely clear the app cache:");
-        if (action === "set") {
-            let val = prompt("Enter new absolute total class points:");
-            if (val !== null && !isNaN(val)) {
-                localStorage.setItem('lit_class_total', parseInt(val));
-                updateDisplays();
-            }
-        } else if (action === "reset") {
-            if (confirm("Are you absolute sure you want to clear all student wallets and progress metrics?")) {
-                localStorage.clear();
-                updateDisplays();
-            }
-        }
-    } else {
-        alert("Incorrect PIN access denied.");
+  let pass = prompt("Enter Teacher Security PIN:");
+  if (pass === "1234") {
+    let action = prompt("Type 'set' to adjust total class points, or 'reset' to completely clear the app cache:");
+    if (action === "set") {
+      let val = prompt("Enter new absolute total class points:");
+      if (val !== null && !isNaN(val)) {
+        localStorage.setItem('lit_class_total', parseInt(val));
+        updateDisplays();
+      }
+    } else if (action === "reset") {
+      if (confirm("Are you absolutely sure you want to clear all student wallets and progress metrics?")) {
+        localStorage.clear();
+        updateDisplays();
+      }
     }
+  } else {
+    alert("Incorrect PIN access denied.");
+  }
 }
 </script>
 </body>
